@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Niharika 💐</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      color: white;
+      position: relative;
+    }
+
+    .flower-img {
+      max-width: 90%;
+      max-height: 80vh;
+      opacity: 0;
+      transform: scale(0.8);
+      animation: bloomIn 2s ease-in-out forwards;
+    }
+
+    @keyframes bloomIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .message {
+      position: absolute;
+      bottom: 7%;
+      font-size: 1.8em;
+      color: #ffc0cb;
+      opacity: 0;
+      transition: opacity 1s ease;
+      text-align: center;
+      padding: 0 10px;
+    }
+
+    @media (max-width: 480px) {
+      .message {
+        font-size: 1.4em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <img src="flowers.png" alt="Romantic Flowers" class="flower-img" id="flowers"/>
+
+  <div class="message" id="message"></div>
+
+  <script>
+    const messages = [
+      "Hi darling 💖",
+      "You're the sunshine in my world ☀️",
+      "Your smile blooms like these flowers 🌼",
+      " Niharika ❤️"
+    ];
+
+    const messageEl = document.getElementById('message');
+
+    function showMessages(index = 0) {
+      if (index >= messages.length) return;
+      messageEl.style.opacity = 0;
+      setTimeout(() => {
+        messageEl.textContent = messages[index];
+        messageEl.style.opacity = 1;
+        setTimeout(() => {
+          showMessages(index + 1);
+        }, 3000); // Show each message for 3 seconds
+      }, 1000); // Fade between messages
+    }
+
+    // Start the sequence after flowers bloom
+    setTimeout(() => {
+      showMessages();
+    }, 2000);
+  </script>
+
+</body>
+</html>
